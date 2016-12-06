@@ -16,3 +16,18 @@ pyLoadCore -s
 # replace line $DEAMON --deamon –-configdir=/home/pi/.pyload
 
 
+# run service pyload as user
+sudo nano /etc/systemd/system/pyload.service
+
+# Add this in the file
+# [Unit]
+# Description=Downloadtool for One-Click-Hoster written in python.
+# After=network.target
+
+# [Service]
+# ExecStart=/usr/bin/pyLoadCore
+# User=$USER should be changed by process owner
+# Group=$GROUP should be changed by process owner groups
+
+# [Install]
+# WantedBy=multi-user.target
