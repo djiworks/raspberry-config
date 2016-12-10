@@ -11,7 +11,7 @@ pyLoadCore -s
 # sudo nano /etc/rc.local
 # add line `python /usr/share/pyload/pyLoadCore.py –-daemon –-configdir=/home/pi/.pyload`
 
-# service pyload
+# service pyload method 1
 # sudo nano /etc/init.d/pyload
 # replace line $DEAMON --deamon –-configdir=/home/pi/.pyload
 
@@ -31,3 +31,8 @@ sudo nano /etc/systemd/system/pyload.service
 
 # [Install]
 # WantedBy=multi-user.target
+
+# service pyload method 2
+# preinstall pm2 before
+cd /usr/share/pyload
+pm2 start pyLoadCore.py --name pyload --no-autorestart -- --configdir='/home/pi/.pyload'
